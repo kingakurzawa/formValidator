@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Amatic SC', cursive;
+    background: linear-gradient(105deg, rgba(193,245,243,1) 0%, rgba(208,239,234,1) 53%, rgba(237,217,179,1) 100%);
+}
+svg {
+    margin-top: 50px;
+}
+input {
+    margin-left: 5px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.543);
+    border: none;
+    border-radius: 10px;
+    outline: none
+}
+input:hover {
+    border: 1px dotted #5c5c5ca8;
+}
+label {
+    letter-spacing: 1px;
+}
+.wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ffffff70;
+}
+
+.addAccount {
+    justify-self: center;
+    margin-top: 50px;
+    -webkit-box-shadow: 10px 4px 21px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 4px 21px -4px rgba(0,0,0,0.75);
+    box-shadow: 10px 4px 21px -4px rgba(0,0,0,0.75);
+    font-size: 18px;
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 1px;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: #6c62fe;
+}
+.form-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+.error {
+    display: none;
+    text-transform: lowercase;
+    color: #ff0606;
+}
