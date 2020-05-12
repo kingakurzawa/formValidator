@@ -9,16 +9,16 @@ let clearBtn = document.querySelector('.clear');
 let sendBtn = document.querySelector('.send');
 let succesInfo = document.querySelector('.succesInfo');
 
+buttonAdd.addEventListener('click', e => {
+  e.preventDefault();
+  buttonAdd.style.display = 'none';
+  wrapper.style.display = 'flex'
+})
 
-clearBtn.addEventListener('clear', e => {
+clearBtn.addEventListener('click', e => {
   e.preventDefault();
 
   [username,password,confirmPass,email].forEach(el => {
     el.value = ''
   })
-})
-buttonAdd.addEventListener('click', e => {
-  e.preventDefault();
-  buttonAdd.style.display = 'none';
-  wrapper.style.display = 'flex'
 })
