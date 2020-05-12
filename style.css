@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none
 }
 
 body {
@@ -25,7 +26,6 @@ input {
     border: none;
     border-radius: 10px;
     border: 1px solid transparent;
-    outline: none
 }
 input:hover {
     border: 1px dotted #5c5c5ca8;
@@ -39,6 +39,39 @@ footer {
     align-items: flex-end;
     height: 100%;
     width: 100%;
+}
+span {
+    margin-left: 5px;
+    font-size: 10px;
+}
+.clear, .send {
+    outline: none;
+    font-weight: 100;
+    border: none;
+    border: .5px solid transparent;
+    border-radius: 10px;
+    background: none;
+    color: #8f8f8f9f;
+}
+.clear {
+    padding: 5px 8px;
+    border: 1.5px solid #63626261;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.send {
+    padding: 10px;
+    font-size: 25px;
+}
+.clear:hover, .send:hover {
+    color: #008000;
+    border: .5px solid transparent;
+}
+.buttons-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .container{
     display: flex;
@@ -97,7 +130,8 @@ footer {
     font-size: 15px;
     color: #636262de;
 }
-span {
-    margin-left: 5px;
-    font-size: 10px;
+
+.succesInfo {
+    display: none;
+    color: green;
 }
