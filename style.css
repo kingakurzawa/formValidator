@@ -23,6 +23,7 @@ svg {
 }
 input {
     margin-left: 5px;
+    padding-left: 10px;
     height: 25px;
     width: 165px;
     background: rgba(255, 255, 255, 0.543);
@@ -113,10 +114,9 @@ span {
     justify-content: space-between;
     margin: 5px 0;
 }
-.error {
-    display: none;
-    text-transform: lowercase;
-    color: #ff0606;
+.form-box.error input {
+    border: 1px solid rgba(255, 0, 0, 0.200);
+    background: rgba(255, 0, 0, 0.146);
 }
 
 .footer-box {
