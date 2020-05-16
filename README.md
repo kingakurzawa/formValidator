@@ -1,7 +1,7 @@
 # formValidator
 Simple form app which I created for exercise purposes vanilla JS and usage localStorage. 
 
-## Runing the app:
+## Running the app:
 https://thirsty-albattani-1be566.netlify.app
 
 
