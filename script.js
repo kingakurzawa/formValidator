@@ -8,7 +8,7 @@ let clearBtn = document.querySelector('.clear');
 let sendBtn = document.querySelector('.send');
 let succesInfo = document.querySelector('.succesInfo');
 let mainBox = document.querySelector('.mainBox');
-let succesInfoText = document.querySelector('.succesInfo-text');
+let succesInfoText = document.querySelector('.succesInfoText-span');
 
 let allInputs = [username, password, confirmPass, email];
 let storedUsername = localStorage.getItem('username');
@@ -65,6 +65,18 @@ let setSuccesInfoText = ()=> {
   succesInfoText.textContent = username.value
 }
 
+let saveToLocalStorage = () => {
+  localStorage.setItem('username', username.value)
+  localStorage.setItem('email', email.value)  
+}
+
+if (username) {
+  username.value = storedUsername
+}
+if (email) {
+  email.value = storedEmail
+};
+
 buttonAdd.addEventListener('click', e => {
   e.preventDefault();
   buttonAdd.style.display = 'none';
@@ -94,17 +106,5 @@ sendBtn.addEventListener('click', e => {
   showSuccesBox();
   setSuccesInfoText();
 });
-
-let saveToLocalStorage = () => {
-  localStorage.setItem('username', username.value)
-  localStorage.setItem('email', email.value)  
-}
-
-if (username) {
-  username.value = storedUsername
-}
-if (email) {
-  email.value = storedEmail
-};
 
 document.addEventListener('change', saveToLocalStorage);

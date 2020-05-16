@@ -152,9 +152,15 @@ footer {
     img {
         width: 400px;
     }
+    .succesInfoText {
+        font-size: 30px;
+    }
 }
 @media(min-width:992px) {
     img {
         width: 550px;
+    }
+    .succesInfoText {
+        font-size: 40px;
     }
 }
