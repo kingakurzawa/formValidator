@@ -36,7 +36,7 @@ let checkLength = (item, minLength) => {
 };
 
 let checkEmailValue = el => {
-  var emailRequirement = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  var emailRequirement = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
   if (!emailRequirement.test(el.value)) {
      showError(email)
   }
