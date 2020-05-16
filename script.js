@@ -1,21 +1,21 @@
-let buttonAdd = document.querySelector('.addAccount');
-let wrapper = document.querySelector('.wrapper');
-let username = document.querySelector('#username');
-let password = document.querySelector('#password');
-let confirmPass = document.querySelector('#confirmPass');
-let email = document.querySelector('#email');
-let emailBox = document.querySelector('.emailBox');
-let clearBtn = document.querySelector('.clear');
-let sendBtn = document.querySelector('.send');
-let succesInfo = document.querySelector('.succesInfo');
-let mainBox = document.querySelector('.mainBox');
-let succesInfoText = document.querySelector('.succesInfoText-span');
+const buttonAdd = document.querySelector('.addAccount');
+const wrapper = document.querySelector('.wrapper');
+const username = document.querySelector('#username');
+const password = document.querySelector('#password');
+const confirmPass = document.querySelector('#confirmPass');
+const email = document.querySelector('#email');
+const emailBox = document.querySelector('.emailBox');
+const clearBtn = document.querySelector('.clear');
+const sendBtn = document.querySelector('.send');
+const succesInfo = document.querySelector('.succesInfo');
+const mainBox = document.querySelector('.mainBox');
+const succesInfoText = document.querySelector('.succesInfoText-span');
 
-let allInputs = [username, password, confirmPass, email];
-let storedUsername = localStorage.getItem('username');
-let storedEmail = localStorage.getItem('email');
+const allInputs = [username, password, confirmPass, email];
+const storedUsername = localStorage.getItem('username');
+const storedEmail = localStorage.getItem('email');
 
-let checkFormValues = item => {
+const checkFormValues = item => {
   item.forEach(el => {
     if (el.value === '') {
       showError(el)
@@ -25,34 +25,34 @@ let checkFormValues = item => {
   })
 };
 
-let checkLength = (item, minLength) => {
-  let setErrorMsg = (text) => {
+const checkLength = (item, minLength) => {
+  const setErrorMsg = (text) => {
       item.placeholder = text
   };
-  let inputLength = item.value.length;
+  const inputLength = item.value.length;
   if (inputLength < minLength) {
     showError(item);
     setErrorMsg(`should have min.${minLength} lit.`)
   }
 };
 
-let checkEmailValue = el => {
-  let emailRequirement = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+const checkEmailValue = el => {
+  const emailRequirement = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
   if (!emailRequirement.test(el.value)) {
      showError(email)
     }
 }
 
-let comparePasswords = ()=> {
+const comparePasswords = ()=> {
   if (password.value !== confirmPass.value) {
     showError(password),
     password.placeholder = 'passwords must be the same'
   }
 }
 
-let showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
-  let usernameLength = username.value.length
-  let passwordLength = password.value.length;
+const showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
+  const usernameLength = username.value.length
+  const passwordLength = password.value.length;
 
   if ((passwordLength >= requirePasswordLength) 
         && (usernameLength >= requireUsernameLength)
@@ -65,21 +65,21 @@ let showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
             }
 }
 
-let showError = (item) => {
-  let formBox = item.parentElement;
+const showError = (item) => {
+  const formBox = item.parentElement;
   formBox.classList.add('error')
 };
 
-let hiddenError = (item) => {
-  let formBox = item.parentElement;
+const hiddenError = (item) => {
+  const formBox = item.parentElement;
   formBox.classList.remove('error')
 };
 
-let setSuccesInfoText = ()=> {
+const setSuccesInfoText = ()=> {
   succesInfoText.textContent = username.value
 }
 
-let saveToLocalStorage = () => {
+const saveToLocalStorage = () => {
   localStorage.setItem('username', username.value)
   localStorage.setItem('email', email.value)  
 }
@@ -113,8 +113,8 @@ allInputs.forEach(el => {
 
 sendBtn.addEventListener('click', e => {
   e.preventDefault();
-  let requirePasswordLength = 6;
-  let requireUsernameLength = 3;
+  const requirePasswordLength = 6;
+  const requireUsernameLength = 3;
 
   checkFormValues([username,password,confirmPass,email]);
   checkLength(username, requireUsernameLength);
