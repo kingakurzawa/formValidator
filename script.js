@@ -35,6 +35,13 @@ let checkLength = (item, minLength) => {
   }
 };
 
+let checkEmailValue = el => {
+  var emailRequirement = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  if (!emailRequirement.test(el.value)) {
+     showError(email)
+  }
+}
+
 let comparePasswords = ()=> {
   if (password.value !== confirmPass.value) {
     showError(password),
@@ -42,13 +49,16 @@ let comparePasswords = ()=> {
   }
 }
 
-let showSuccesBox = () => {
+let showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
   let usernameLength = username.value.length
   let passwordLength = password.value.length;
-  if ((passwordLength >= 6) && (usernameLength >=3) && (password.value === confirmPass.value)) {
-      succesInfo.style.display = 'flex',
-      mainBox.style.display = 'none'
-  }
+  if ((passwordLength >= requirePasswordLength) 
+        && (usernameLength >= requireUsernameLength)
+        && (password.value === confirmPass.value)) 
+          {
+             succesInfo.style.display = 'flex',
+             mainBox.style.display = 'none'
+          }
 }
 
 let showError = (item) => {
@@ -86,7 +96,8 @@ buttonAdd.addEventListener('click', e => {
 clearBtn.addEventListener('click', e => {
   e.preventDefault();
   [username,password,confirmPass,email].forEach(el => {
-    el.value = ''
+    el.value = '';
+    hiddenError(el);
   });
 });
 
@@ -98,12 +109,16 @@ allInputs.forEach(el => {
 
 sendBtn.addEventListener('click', e => {
   e.preventDefault();
+  let requirePasswordLength = 6;
+  let requireUsernameLength = 3;
+
   checkFormValues([username,password,confirmPass,email]);
-  checkLength(username, 3);
-  checkLength(password, 6);
+  checkLength(username, requireUsernameLength);
+  checkLength(password, requirePasswordLength );
   comparePasswords();
+  checkEmailValue(email);
   saveToLocalStorage();
-  showSuccesBox();
+  showSuccesBox(requirePasswordLength, requireUsernameLength);
   setSuccesInfoText();
 });
 
