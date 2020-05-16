@@ -4,6 +4,7 @@ let username = document.querySelector('#username');
 let password = document.querySelector('#password');
 let confirmPass = document.querySelector('#confirmPass');
 let email = document.querySelector('#email');
+let emailBox = document.querySelector('.emailBox');
 let clearBtn = document.querySelector('.clear');
 let sendBtn = document.querySelector('.send');
 let succesInfo = document.querySelector('.succesInfo');
@@ -36,10 +37,10 @@ let checkLength = (item, minLength) => {
 };
 
 let checkEmailValue = el => {
-  var emailRequirement = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
+  let emailRequirement = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
   if (!emailRequirement.test(el.value)) {
      showError(email)
-  }
+    }
 }
 
 let comparePasswords = ()=> {
@@ -52,13 +53,16 @@ let comparePasswords = ()=> {
 let showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
   let usernameLength = username.value.length
   let passwordLength = password.value.length;
+
   if ((passwordLength >= requirePasswordLength) 
         && (usernameLength >= requireUsernameLength)
-        && (password.value === confirmPass.value)) 
+        && (password.value === confirmPass.value)
+        && (!emailBox.classList.contains('error'))
+  ) 
           {
              succesInfo.style.display = 'flex',
              mainBox.style.display = 'none'
-          }
+            }
 }
 
 let showError = (item) => {
