@@ -56,7 +56,7 @@ const checkEmailValue = el => {
 }
 
 const checkCityValue = el => {
-  const cityReq = /^[a-z\s]{0,255}$/
+  const cityReq = /^[a-zA-Z]{0,255}$/
   if (!cityReq.test(el.value)) {
     showError(city)
   }
