@@ -5,6 +5,7 @@ const password = document.querySelector('#password');
 const confirmPass = document.querySelector('#confirmPass');
 const email = document.querySelector('#email');
 const city = document.querySelector('#city');
+const cityBox = document.querySelector('.city')
 const gender = document.getElementsByName('genders');
 const emailBox = document.querySelector('.emailBox');
 const clearBtn = document.querySelector('.clear');
@@ -54,6 +55,13 @@ const checkEmailValue = el => {
     }
 }
 
+const checkCityValue = el => {
+  const cityReq = /^[a-z\s]{0,255}$/
+  if (!cityReq.test(el.value)) {
+    showError(city)
+  }
+}
+
 const comparePasswords = ()=> {
   if (password.value !== confirmPass.value) {
     showError(password);
@@ -66,14 +74,15 @@ const showSuccesBox = (requirePasswordLength, requireUsernameLength) => {
   const passwordLength = password.value.length;
 
   if ((passwordLength >= requirePasswordLength) 
-        && (usernameLength >= requireUsernameLength)
-        && (password.value === confirmPass.value)
-        && (!emailBox.classList.contains('error'))
+      && (usernameLength >= requireUsernameLength)
+      && (password.value === confirmPass.value)
+      && (!emailBox.classList.contains('error'))
+      && (!cityBox.classList.contains('error'))
   ) 
-          {
-             succesInfo.style.display = 'flex';
-             mainBox.style.display = 'none';
-            }
+      {
+         succesInfo.style.display = 'flex';
+         mainBox.style.display = 'none';
+      }
 }
 
 const showError = (item) => {
@@ -142,6 +151,7 @@ sendBtn.addEventListener('click', e => {
   checkLength(city, requireCityLength);
   comparePasswords();
   checkEmailValue(email);
+  checkCityValue(city);
   saveToLocalStorage();
   showSuccesBox(requirePasswordLength, requireUsernameLength);
   setSuccesInfoText();
