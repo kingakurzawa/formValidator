@@ -127,7 +127,7 @@ buttonAdd.addEventListener('click', e => {
 
 clearBtn.addEventListener('click', e => {
   e.preventDefault();
-  [username,password,confirmPass,email].forEach(el => {
+  [username,password,confirmPass,email,city].forEach(el => {
     el.value = '';
     hiddenError(el);
   });
